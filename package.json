@@ -1,0 +1,21 @@
+{
+  "name": "status-update",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "statusUpdate": "./bin/index.js"
+  },
+  "dependencies": {
+    "@slack/events-api": "^2.3.2",
+    "@slack/web-api": "^5.8.1",
+    "nodegit": "^0.26.5",
+    "yargs": "^15.3.1"
+  }
+}
