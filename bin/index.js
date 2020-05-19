@@ -13,7 +13,6 @@ const token = process.env.SLACK_TOKEN;
 const web = new WebClient(token);
 
 const directory = process.cwd();
-console.log("directory: ", directory);
 
 async function getBranchName(repo) {
   const currentBranch = await repo.getCurrentBranch();
