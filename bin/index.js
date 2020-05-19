@@ -13,6 +13,7 @@ const token = process.env.SLACK_TOKEN;
 const web = new WebClient(token);
 
 const directory = process.cwd();
+console.log("directory: ", directory);
 
 async function getBranchName(repo) {
   const currentBranch = await repo.getCurrentBranch();
@@ -25,7 +26,7 @@ async function sendSlackMessage(fullMessage) {
     fs.readFileSync(path.resolve(__dirname, "../channels.json"), "utf8")
   );
   if (args.channel) {
-    const response = await web.conversations.list();
+    const response = await web.users.conversations();
     const allChannels = response.channels;
     const channel = allChannels.find(
       (channel) => channel.name === args.channel
