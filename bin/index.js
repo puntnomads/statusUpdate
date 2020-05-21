@@ -74,14 +74,17 @@ async function sendStatusUpdate() {
     .replace("task", "")
     .replace("bug", "")
     .trim()}) status update:  `;
+  const commitSentences = [];
   await history.on("commit", function (commit) {
     if (++count >= commitCount) {
       return;
     }
     const message = commit.message().trim();
-    fullMessage = fullMessage + message + ". ";
+    commitSentences.push(message + ". ");
   });
   history.on("end", async function () {
+    const commitSentencesCombined = [...commitSentences].reverse().join("");
+    fullMessage = fullMessage + commitSentencesCombined;
     await sendSlackMessage(fullMessage);
   });
   await history.start();
