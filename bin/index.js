@@ -25,7 +25,7 @@ async function sendSlackMessage(fullMessage) {
     fs.readFileSync(path.resolve(__dirname, "../channels.json"), "utf8")
   );
   if (args.channel) {
-    const response = await web.users.conversations();
+    const response = await web.conversations.list({ limit: 1000, types: "public_channel,private_channel" });
     const allChannels = response.channels;
     const channel = allChannels.find(
       (channel) => channel.name === args.channel
